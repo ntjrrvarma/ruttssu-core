@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 
-// Reusable "Bento Card"
+// 1. Bento Card Component (Visual Protocol)
 const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div className={`
     bg-brand-panel border border-brand-steel p-6 
     hover:border-brand-cyan transition-colors duration-100 ease-linear
-    flex flex-col relative group
+    flex flex-col relative group overflow-hidden
     ${className}
   `}>
     {/* Corner Decor */}
@@ -16,7 +16,7 @@ const BentoCard = ({ children, className = "" }: { children: React.ReactNode; cl
   </div>
 );
 
-// Progress Bar Component
+// 2. Stat Bar Component
 const StatBar = ({ label, value }: { label: string; value: number }) => (
   <div className="mb-3">
     <div className="flex justify-between text-xs font-mono text-brand-muted mb-1">
@@ -34,44 +34,38 @@ const StatBar = ({ label, value }: { label: string; value: number }) => (
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen md:h-screen pt-20 pb-4 px-4 md:px-8 max-w-7xl mx-auto flex flex-col">
       
-      {/* THE GRID SYSTEM */}
-      <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 h-full">
+      {/* THE GRID SYSTEM (Fits screen height on desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 flex-grow">
 
-        {/* BLOCK A: ENGINEER PROFILE (Bio) */}
+        {/* BLOCK A: IDENTITY CORE (Restored the Headline Visuals) */}
         <BentoCard className="md:col-span-3 md:row-span-2 justify-between">
           <div>
             <div className="inline-block px-2 py-1 bg-brand-steel/30 text-brand-cyan font-mono text-xs mb-4">
               // ENGINEER_PROFILE
             </div>
             
-            {/* THE USER LOG */}
-            <div className="font-mono text-sm space-y-2 mb-8 border-l-2 border-brand-steel pl-4">
-              <div>
-                <span className="text-brand-muted">USER:</span> <span className="text-white font-bold tracking-wider">RAHUL N R</span>
-              </div>
-              <div>
-                <span className="text-brand-muted">{'>'} CLASS:</span> <span className="text-brand-cyan">FULL_STACK_ENGINEER</span>
-              </div>
-              <div>
-                <span className="text-brand-muted">{'>'} LOC:</span> <span className="text-brand-gold">CHENNAI_SECTOR</span>
-              </div>
-            </div>
+            {/* THE HEADLINE IS BACK */}
+            <h1 className="text-4xl md:text-6xl font-sans font-bold uppercase tracking-tight text-white mb-2 leading-none">
+              BUILDING THE <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-600">FOUNDATION.</span>
+            </h1>
+            
+            <h2 className="text-lg md:text-xl text-brand-muted font-sans font-medium mb-6 mt-2">
+              Rahul N R <span className="text-brand-steel mx-2">//</span> Full Stack Engineer
+            </h2>
 
-            {/* SYSTEM BIO */}
-            <div className="bg-brand-void/50 p-4 border border-brand-steel/50 rounded-sm">
-              <h3 className="text-xs font-bold text-brand-muted mb-2 uppercase tracking-widest">System Bio:</h3>
-              <p className="max-w-xl text-brand-text font-mono text-sm leading-relaxed">
-                Initiating R.U.T.T.S.S.U Protocol... <br/>
-                Specialized in bridging backend logic with precision frontend UI. 
-                <br/><br/>
-                <span className="text-brand-cyan">CURRENT OBJECTIVE:</span> Building scalable cloud systems and minimalist digital environments.
+            <div className="max-w-xl text-brand-muted font-mono text-xs md:text-sm leading-relaxed border-l-2 border-brand-steel pl-4">
+              <p>
+                Initiating R.U.T.T.S.S.U Protocol. Specialized in bridging backend logic with precision frontend UI.
+              </p>
+              <p className="mt-2 text-brand-text">
+                <span className="text-brand-cyan">{'>'} CURRENT_OBJECTIVE:</span> Building scalable cloud systems & minimalist digital environments.
               </p>
             </div>
           </div>
           
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8">
             <Link 
               href="/about" 
               className="inline-flex items-center gap-2 bg-brand-cyan text-brand-void px-6 py-3 font-mono font-bold text-sm hover:bg-white transition-colors duration-200"
@@ -81,7 +75,7 @@ export default function Dashboard() {
           </div>
         </BentoCard>
 
-        {/* BLOCK B: LIVE TELEMETRY (Real World Data) */}
+        {/* BLOCK B: LIVE TELEMETRY */}
         <BentoCard className="md:col-span-1 justify-center space-y-4">
           <div className="text-xs font-mono text-brand-muted space-y-2">
             <div className="flex justify-between">
@@ -104,23 +98,23 @@ export default function Dashboard() {
           </div>
         </BentoCard>
 
-        {/* BLOCK D: INSTALLED DRIVERS (Skills) */}
-        <BentoCard className="md:col-span-1 md:row-span-2">
-          <h3 className="text-sm font-sans font-bold text-brand-cyan uppercase tracking-wider mb-6">
+        {/* BLOCK D: INSTALLED DRIVERS (The Real Stack) */}
+        <BentoCard className="md:col-span-1 md:row-span-2 overflow-y-auto">
+          <h3 className="text-sm font-sans font-bold text-brand-cyan uppercase tracking-wider mb-6 sticky top-0 bg-brand-panel pb-2">
             {'>'} INSTALLED_DRIVERS
           </h3>
           <div className="space-y-4">
             <StatBar label="NEXT_JS" value={95} />
             <StatBar label="TYPESCRIPT" value={90} />
             <StatBar label="SUPABASE" value={85} />
+            <StatBar label="TAILWIND" value={98} />
             <StatBar label="NODE_JS" value={80} />
-            <StatBar label="SYS_ARCH" value={60} />
           </div>
         </BentoCard>
 
-        {/* BLOCK C: ACTIVE MODULES (Projects in Log Format) */}
+        {/* BLOCK C: ACTIVE MODULES (Project Logs) */}
         <BentoCard className="md:col-span-2 overflow-y-auto">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-sans font-bold text-brand-gold uppercase tracking-wider">
               {'>'} ACTIVE_MODULES
             </h3>
@@ -129,43 +123,40 @@ export default function Dashboard() {
             </Link>
           </div>
           
-          <div className="space-y-6 font-mono text-xs">
+          <div className="space-y-4 font-mono text-xs">
             
-            {/* Project 1 */}
-            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors">
+            {/* Project 1: RUTTSSU */}
+            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors cursor-default">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-brand-cyan font-bold text-sm">MODULE: RUTTSSU_OS</span>
-                <span className="text-green-500 bg-green-500/10 px-2 py-0.5 rounded-[2px]">[DEPLOYED]</span>
+                <span className="text-brand-cyan font-bold">RUTTSSU_OS</span>
+                <span className="text-green-500">[DEPLOYED]</span>
               </div>
-              <div className="text-brand-muted mb-2">ID: PRJ-01 | LATENCY: 24ms</div>
-              <p className="text-brand-text leading-relaxed opacity-80 group-hover/item:opacity-100">
-                LOG: Personal Operating System v1.0. Engineered with Next.js 15 for sub-second page loads. Features a custom Bento Grid interface.
+              <p className="text-brand-muted leading-relaxed line-clamp-2">
+                LOG: Personal Operating System v1.0. Engineered with Next.js 15 for sub-second page loads.
               </p>
             </div>
 
-            {/* Project 2 */}
-            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors">
+            {/* Project 2: Bifrost */}
+            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors cursor-default">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-brand-cyan font-bold text-sm">MODULE: BIFROST_ENGINE</span>
-                <span className="text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-[2px]">[INTERNAL]</span>
+                <span className="text-brand-cyan font-bold">BIFROST_ENGINE</span>
+                <span className="text-blue-400">[INTERNAL]</span>
               </div>
-              <div className="text-brand-muted mb-2">ID: PRJ-02 | LATENCY: 12ms</div>
-              <p className="text-brand-text leading-relaxed opacity-80 group-hover/item:opacity-100">
-                LOG: Serverless URL redirection unit. Database managed via Supabase. Optimized for low-latency routing requests.
+              <p className="text-brand-muted leading-relaxed line-clamp-2">
+                LOG: Serverless URL redirection unit. Database managed via Supabase.
               </p>
             </div>
 
           </div>
         </BentoCard>
 
-        {/* BLOCK E: ESTABLISH UPLINK (Contact) */}
+        {/* BLOCK E: UPLINK */}
         <BentoCard className="md:col-span-1 flex-row items-center justify-center gap-4 cursor-pointer hover:bg-brand-steel/20 group">
             <Link href="/connect" className="text-center w-full h-full flex flex-col items-center justify-center">
               <div className="text-brand-cyan text-2xl mb-2 group-hover:scale-110 transition-transform">
                 <FaExternalLinkAlt />
               </div>
               <h3 className="font-mono font-bold text-sm text-white">ESTABLISH_UPLINK</h3>
-              <p className="text-[10px] text-brand-muted mt-1">INITIATE HANDSHAKE</p>
             </Link>
         </BentoCard>
 
