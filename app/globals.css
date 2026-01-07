@@ -3,20 +3,25 @@
 @tailwind utilities;
 
 @layer base {
+  /* Force Dark Mode */
   html {
-    background-color: #050505; /* Matches brand.black */
-    color: #EDEDED;            /* Matches brand.text */
+    background-color: #050505;
+    color: #EDEDED;
   }
   
   body {
     @apply antialiased min-h-screen flex flex-col;
+    /* Use the finalized fonts */
+    font-family: var(--font-inter), sans-serif;
   }
 
-  /* GLOBAL LINK STYLES - No more ugly blue */
+  /* KILL THE BLUE LINKS: Make them gray by default */
   a {
     @apply text-brand-muted transition-colors duration-200;
     text-decoration: none;
   }
+  
+  /* Hover turns them white */
   a:hover {
     @apply text-brand-text;
   }
