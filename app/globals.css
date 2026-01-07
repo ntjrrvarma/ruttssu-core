@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* We will add your custom fonts/theme here later */
+html, body {
+  background-color: #0a0a0a; /* Dark Mode by default */
+  color: #ffffff;
+}
