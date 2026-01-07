@@ -3,49 +3,21 @@
 @tailwind utilities;
 
 @layer base {
-  /* 1. Force the dark theme background */
   html {
-    background-color: #050505; /* True Black */
-    scroll-behavior: smooth;
+    background-color: #050505; /* Matches brand.black */
+    color: #EDEDED;            /* Matches brand.text */
   }
   
-  /* 2. Set the default text color to Off-White (no more black text) */
   body {
-    @apply text-gray-200 antialiased min-h-screen flex flex-col;
-    /* Uses the font variables we set up */
-    font-family: var(--font-inter), sans-serif;
+    @apply antialiased min-h-screen flex flex-col;
   }
 
-  /* 3. KILL THE BLUE LINKS FOREVER ⚔️ */
+  /* GLOBAL LINK STYLES - No more ugly blue */
   a {
-    @apply text-gray-200 transition-colors duration-200;
-    text-decoration: none; /* No underlines by default */
+    @apply text-brand-muted transition-colors duration-200;
+    text-decoration: none;
   }
-
-  /* 4. Hover effect for all links */
   a:hover {
-    @apply text-white;
-  }
-
-  /* 5. Custom Scrollbar (Techy look) */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0a0a0a;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-}
-
-/* UTILITIES */
-@layer utilities {
-  .text-glow {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    @apply text-brand-text;
   }
 }
