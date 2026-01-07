@@ -3,26 +3,38 @@
 @tailwind utilities;
 
 @layer base {
-  /* Force Dark Mode */
   html {
     background-color: #050505;
     color: #EDEDED;
+    cursor: crosshair; /* 1. THE CROSSHAIR CURSOR */
   }
   
   body {
-    @apply antialiased min-h-screen flex flex-col;
-    /* Use the finalized fonts */
-    font-family: var(--font-inter), sans-serif;
+    /* 2. THE FAINT GRID BACKGROUND */
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, #ffffff03 1px, transparent 1px),
+                      linear-gradient(to bottom, #ffffff03 1px, transparent 1px);
   }
 
-  /* KILL THE BLUE LINKS: Make them gray by default */
-  a {
-    @apply text-brand-muted transition-colors duration-200;
-    text-decoration: none;
+  /* 3. CUSTOM SCROLLBAR (Mechanical Look) */
+  ::-webkit-scrollbar {
+    width: 6px;
   }
-  
-  /* Hover turns them white */
-  a:hover {
-    @apply text-brand-text;
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A2A;
+    border-radius: 0px; /* Sharp corners */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00E5FF; /* Cyan on hover */
+  }
+}
+
+@layer components {
+  /* 4. THE GHOST BUTTON CLASS */
+  .btn-cyber {
+    @apply relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-bold tracking-widest text-brand-cyan border border-brand-cyan/30 bg-transparent hover:bg-brand-cyan hover:text-brand-void transition-all duration-100 uppercase text-sm;
   }
 }

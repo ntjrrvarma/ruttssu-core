@@ -9,20 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // THE OFFICIAL RUTTSSU PALETTE
         brand: {
-          black: "#050505",       // Deepest Black (Main Background)
-          dark: "#0A0A0A",        // Slightly lighter (Cards/Nav)
-          gray: "#262626",        // Borders
-          accent: "#3291FF",      // System Blue (Links/Buttons)
-          text: "#EDEDED",        // Main Text (Readable White)
-          muted: "#888888",       // Secondary Text (Subtitles)
+          void: "#050505",       // Deep Space (Main BG)
+          armor: "#0F0F0F",      // Panels/Cards
+          steel: "#2A2A2A",      // Borders/Grid
+          cyan: "#00E5FF",       // Primary Action (Cyber Cyan)
+          gold: "#FFD700",       // Highlights (Architect Gold)
+          success: "#00FF94",    // Logic Green
+          creative: "#9D46FF",   // Data Purple
+          text: "#EDEDED",       // Standard Text
+          muted: "#888888",      // Secondary Text
         },
       },
       fontFamily: {
-        // Logic vs. Design
-        sans: ["var(--font-inter)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-rajdhani)", "sans-serif"], // Default for headers
+        mono: ["var(--font-mono)", "monospace"],      // Default for data
+      },
+      backgroundImage: {
+        // The faint grid pattern (5% opacity white)
+        "grid-pattern": "linear-gradient(to right, #ffffff05 1px, transparent 1px), linear-gradient(to bottom, #ffffff05 1px, transparent 1px)",
       },
     },
   },

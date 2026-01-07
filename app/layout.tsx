@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Rajdhani, JetBrains_Mono } from "next/font/google"; // Import Rajdhani
 import "./globals.css";
 
-// 👇 These imports must match your folder structure exactly
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+// 1. THE DISPLAY FONT (HUD Headers)
+const rajdhani = Rajdhani({ 
+  subsets: ["latin"], 
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-rajdhani"
+});
 
-// Load the Google Font (Inter is clean & techy)
-const inter = Inter({ subsets: ["latin"] });
+// 2. THE DATA FONT (Code/Specs)
+const mono = JetBrains_Mono({ 
+  subsets: ["latin"], 
+  variable: "--font-mono" 
+});
 
-// 🏷️ SEO & BROWSER TAB INFO
 export const metadata: Metadata = {
-  title: "Rahul N R | Ruttssu Core",
-  description: "The personal operating system and portfolio of Rahul N R. Specializing in Scalable Cloud Architecture and UI Design.",
-  keywords: ["Next.js", "Supabase", "Portfolio", "System Architect", "Rahul N R"],
-  openGraph: {
-    title: "Rahul N R - Ruttssu OS",
-    description: "Rapid Unified Technology Transfer & Secure System Unit.",
-    type: "website",
-  },
+  title: "R.U.T.T.S.S.U. | System Active",
+  description: "Rahul’s Unified Technical Testbed & Sandbox System Unit.",
 };
 
 export default function RootLayout({
@@ -28,22 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen flex flex-col bg-[#0a0a0a] text-white selection:bg-blue-500 selection:text-white`}>
-        
-        {/* 1. THE SYSTEM HUD (Navbar) */}
-        <Navbar />
-
-        {/* 2. THE MAIN CONTENT AREA 
-            - 'flex-grow' pushes the footer down if content is short.
-            - 'pt-16' adds padding so the fixed Navbar doesn't hide your content.
-        */}
-        <main className="flex-grow flex flex-col pt-16">
-          {children}
-        </main>
-
-        {/* 3. THE BRAND FOOTER */}
-        <Footer />
-        
+      <body className={`${rajdhani.variable} ${mono.variable} font-sans min-h-screen bg-brand-void text-brand-text antialiased selection:bg-brand-cyan selection:text-brand-void`}>
+        {children}
       </body>
     </html>
   );
