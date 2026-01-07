@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
+import { FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-// Reusable "Bento Card" (Visual Protocol)
+// Reusable "Bento Card"
 const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div className={`
     bg-brand-panel border border-brand-steel p-6 
@@ -9,7 +9,7 @@ const BentoCard = ({ children, className = "" }: { children: React.ReactNode; cl
     flex flex-col relative group
     ${className}
   `}>
-    {/* Corner Decor - The "Tech" feel */}
+    {/* Corner Decor */}
     <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-brand-muted/30 group-hover:border-brand-cyan transition-colors"></div>
     <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-brand-muted/30 group-hover:border-brand-cyan transition-colors"></div>
     {children}
@@ -39,26 +39,39 @@ export default function Dashboard() {
       {/* THE GRID SYSTEM */}
       <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 h-full">
 
-        {/* BLOCK A: IDENTITY CORE (The Engineer) */}
+        {/* BLOCK A: ENGINEER PROFILE (Bio) */}
         <BentoCard className="md:col-span-3 md:row-span-2 justify-between">
           <div>
             <div className="inline-block px-2 py-1 bg-brand-steel/30 text-brand-cyan font-mono text-xs mb-4">
               // ENGINEER_PROFILE
             </div>
-            <h1 className="text-4xl md:text-6xl font-sans font-bold uppercase tracking-tight text-white mb-2">
-              BUILDING THE <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-600">FOUNDATION.</span>
-            </h1>
-            <h2 className="text-lg md:text-xl text-brand-muted font-sans font-medium mb-6">
-              Rahul N R // Full Stack Engineer
-            </h2>
-            <p className="max-w-xl text-brand-muted font-mono text-sm leading-relaxed">
-              Initiating Protocol. Currently focused on building scalable web applications, 
-              mastering serverless architecture, and crafting intuitive user experiences.
-              <br/><br/>
-              <span className="text-brand-gold">{'>'} SYSTEM_STATUS:</span> Learning & Evolving.
-            </p>
+            
+            {/* THE USER LOG */}
+            <div className="font-mono text-sm space-y-2 mb-8 border-l-2 border-brand-steel pl-4">
+              <div>
+                <span className="text-brand-muted">USER:</span> <span className="text-white font-bold tracking-wider">RAHUL N R</span>
+              </div>
+              <div>
+                <span className="text-brand-muted">{'>'} CLASS:</span> <span className="text-brand-cyan">FULL_STACK_ENGINEER</span>
+              </div>
+              <div>
+                <span className="text-brand-muted">{'>'} LOC:</span> <span className="text-brand-gold">CHENNAI_SECTOR</span>
+              </div>
+            </div>
+
+            {/* SYSTEM BIO */}
+            <div className="bg-brand-void/50 p-4 border border-brand-steel/50 rounded-sm">
+              <h3 className="text-xs font-bold text-brand-muted mb-2 uppercase tracking-widest">System Bio:</h3>
+              <p className="max-w-xl text-brand-text font-mono text-sm leading-relaxed">
+                Initiating R.U.T.T.S.S.U Protocol... <br/>
+                Specialized in bridging backend logic with precision frontend UI. 
+                <br/><br/>
+                <span className="text-brand-cyan">CURRENT OBJECTIVE:</span> Building scalable cloud systems and minimalist digital environments.
+              </p>
+            </div>
           </div>
-          <div className="mt-8">
+          
+          <div className="mt-8 flex gap-4">
             <Link 
               href="/about" 
               className="inline-flex items-center gap-2 bg-brand-cyan text-brand-void px-6 py-3 font-mono font-bold text-sm hover:bg-white transition-colors duration-200"
@@ -80,8 +93,8 @@ export default function Dashboard() {
               <span className="text-green-500">24ms</span>
             </div>
             <div className="flex justify-between">
-              <span>CURRENT_TASK:</span>
-              <span className="text-brand-gold animate-pulse">DEV_OPS</span>
+              <span>UPTIME:</span>
+              <span className="text-brand-gold animate-pulse">99.9%</span>
             </div>
           </div>
           <div className="w-full h-[1px] bg-brand-steel"></div>
@@ -91,69 +104,68 @@ export default function Dashboard() {
           </div>
         </BentoCard>
 
-        {/* BLOCK D: INSTALLED DRIVERS (The Real Stack) */}
+        {/* BLOCK D: INSTALLED DRIVERS (Skills) */}
         <BentoCard className="md:col-span-1 md:row-span-2">
           <h3 className="text-sm font-sans font-bold text-brand-cyan uppercase tracking-wider mb-6">
             {'>'} INSTALLED_DRIVERS
           </h3>
           <div className="space-y-4">
-            <StatBar label="NEXT_JS_15" value={95} />
+            <StatBar label="NEXT_JS" value={95} />
             <StatBar label="TYPESCRIPT" value={90} />
             <StatBar label="SUPABASE" value={85} />
-            <StatBar label="TAILWIND" value={98} />
             <StatBar label="NODE_JS" value={80} />
+            <StatBar label="SYS_ARCH" value={60} />
           </div>
         </BentoCard>
 
-        {/* BLOCK C: ACTIVE MODULES (Real Projects) */}
-        <BentoCard className="md:col-span-2">
+        {/* BLOCK C: ACTIVE MODULES (Projects in Log Format) */}
+        <BentoCard className="md:col-span-2 overflow-y-auto">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-sm font-sans font-bold text-brand-gold uppercase tracking-wider">
               {'>'} ACTIVE_MODULES
             </h3>
             <Link href="/projects" className="text-xs font-mono text-brand-muted hover:text-white hover:underline">
-              [VIEW_ALL]
+              [SYSTEM_INDEX]
             </Link>
           </div>
-          <div className="space-y-3 font-mono text-sm">
+          
+          <div className="space-y-6 font-mono text-xs">
             
-            {/* Project 1: This Portfolio */}
-            <div className="flex justify-between items-center group/item cursor-pointer">
-              <span className="text-brand-text group-hover/item:text-brand-cyan transition-colors">
-                [01] RUTTSSU_OS <span className="text-brand-muted text-xs">// PORTFOLIO</span>
-              </span>
-              <span className="text-xs text-green-500">[LIVE]</span>
+            {/* Project 1 */}
+            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-brand-cyan font-bold text-sm">MODULE: RUTTSSU_OS</span>
+                <span className="text-green-500 bg-green-500/10 px-2 py-0.5 rounded-[2px]">[DEPLOYED]</span>
+              </div>
+              <div className="text-brand-muted mb-2">ID: PRJ-01 | LATENCY: 24ms</div>
+              <p className="text-brand-text leading-relaxed opacity-80 group-hover/item:opacity-100">
+                LOG: Personal Operating System v1.0. Engineered with Next.js 15 for sub-second page loads. Features a custom Bento Grid interface.
+              </p>
             </div>
-            <div className="w-full h-[1px] bg-brand-steel/50"></div>
 
-            {/* Project 2: The Redirect Engine we built */}
-            <div className="flex justify-between items-center group/item cursor-pointer">
-              <span className="text-brand-text group-hover/item:text-brand-cyan transition-colors">
-                [02] BIFROST_ENGINE <span className="text-brand-muted text-xs">// LINK_SHORTENER</span>
-              </span>
-              <span className="text-xs text-blue-400">[INTERNAL]</span>
-            </div>
-            <div className="w-full h-[1px] bg-brand-steel/50"></div>
-
-            {/* Project 3: A Placeholder for your next idea */}
-            <div className="flex justify-between items-center group/item cursor-pointer">
-              <span className="text-brand-text group-hover/item:text-brand-cyan transition-colors">
-                [03] CONTENT_GALLERY <span className="text-brand-muted text-xs">// CMS</span>
-              </span>
-              <span className="text-xs text-yellow-500">[DEV]</span>
+            {/* Project 2 */}
+            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-brand-cyan font-bold text-sm">MODULE: BIFROST_ENGINE</span>
+                <span className="text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded-[2px]">[INTERNAL]</span>
+              </div>
+              <div className="text-brand-muted mb-2">ID: PRJ-02 | LATENCY: 12ms</div>
+              <p className="text-brand-text leading-relaxed opacity-80 group-hover/item:opacity-100">
+                LOG: Serverless URL redirection unit. Database managed via Supabase. Optimized for low-latency routing requests.
+              </p>
             </div>
 
           </div>
         </BentoCard>
 
-        {/* BLOCK E: THE UPLINK (Contact) */}
+        {/* BLOCK E: ESTABLISH UPLINK (Contact) */}
         <BentoCard className="md:col-span-1 flex-row items-center justify-center gap-4 cursor-pointer hover:bg-brand-steel/20 group">
             <Link href="/connect" className="text-center w-full h-full flex flex-col items-center justify-center">
               <div className="text-brand-cyan text-2xl mb-2 group-hover:scale-110 transition-transform">
                 <FaExternalLinkAlt />
               </div>
               <h3 className="font-mono font-bold text-sm text-white">ESTABLISH_UPLINK</h3>
-              <p className="text-[10px] text-brand-muted mt-1">INITIATE CONTACT SEQUENCE</p>
+              <p className="text-[10px] text-brand-muted mt-1">INITIATE HANDSHAKE</p>
             </Link>
         </BentoCard>
 
