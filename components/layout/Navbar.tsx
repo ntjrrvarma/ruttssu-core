@@ -1,58 +1,45 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { FaGithub } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const pathname = usePathname();
-  
-  // Helper to check if link is active
-  const isActive = (path: string) => pathname === path;
+  // Simple time hook for the HUD
+  const [time, setTime] = useState<string>("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString("en-US", { hour12: false }));
+    };
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-16 bg-brand-black/80 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-        
-        {/* 1. LOGO (Hardcoded here) */}
-        <Link href="/" className="hover:opacity-80 transition-opacity select-none">
-          <div className="font-mono font-bold tracking-widest text-lg">
-            <span className="text-white">RUTTSSU</span>
-            <span className="text-brand-accent">.CORE</span>
-          </div>
-        </Link>
-
-        {/* 2. CENTER LINKS (Hidden on mobile) */}
-        <div className="hidden md:flex items-center gap-8 font-mono text-xs tracking-wide">
-          {["Projects", "Insights", "Connect"].map((item) => {
-            const path = `/${item.toLowerCase()}`;
-            return (
-              <Link
-                key={item}
-                href={path}
-                className={`uppercase transition-colors ${
-                  isActive(path) ? "text-brand-accent" : "text-brand-muted hover:text-white"
-                }`}
-              >
-                {item}
-              </Link>
-            );
-          })}
+    <nav className="fixed top-0 left-0 right-0 z-50 h-16 bg-brand-void/90 backdrop-blur-sm border-b border-brand-steel flex items-center justify-between px-6">
+      
+      {/* 1. IDENTITY */}
+      <Link href="/" className="group flex items-center gap-2">
+        <div className="font-sans font-bold text-xl tracking-wider text-white group-hover:text-brand-cyan transition-colors duration-100">
+          R.U.T.T.S.S.U. <span className="text-brand-gold text-xs align-top">[v1.0]</span>
         </div>
+      </Link>
 
-        {/* 3. RIGHT ACTIONS */}
-        <div className="flex items-center gap-4">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-muted hover:text-white transition-colors"
-          >
-            <FaGithub size={20} />
-          </a>
-        </div>
+      {/* 2. SYSTEM STATUS (Hidden on mobile) */}
+      <div className="hidden md:flex items-center gap-3 border border-brand-steel px-4 py-1 bg-brand-panel">
+        <div className="w-2 h-2 rounded-full bg-green-500 animate-blink shadow-[0_0_8px_#22c55e]"></div>
+        <span className="font-mono text-xs text-brand-cyan tracking-widest">SYSTEM: ONLINE</span>
+        <span className="font-mono text-xs text-brand-muted border-l border-brand-steel pl-3 ml-1">{time}</span>
       </div>
+
+      {/* 3. COMMAND MENU TRIGGER */}
+      <button className="flex items-center gap-2 font-mono text-xs text-brand-muted hover:text-brand-cyan transition-colors duration-100 group">
+        <span className="hidden sm:inline">[ COMMAND_MENU ]</span>
+        <span className="sm:hidden">[ :: ]</span>
+      </button>
+
     </nav>
   );
 }

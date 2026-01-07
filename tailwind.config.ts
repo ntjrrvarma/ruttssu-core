@@ -10,24 +10,30 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          void: "#050505",       // Deep Space (Main BG)
-          armor: "#0F0F0F",      // Panels/Cards
-          steel: "#2A2A2A",      // Borders/Grid
-          cyan: "#00E5FF",       // Primary Action (Cyber Cyan)
-          gold: "#FFD700",       // Highlights (Architect Gold)
-          success: "#00FF94",    // Logic Green
-          creative: "#9D46FF",   // Data Purple
-          text: "#EDEDED",       // Standard Text
+          void: "#050505",       // Main Background
+          panel: "#0F0F0F",      // Card Backgrounds
+          steel: "#2A2A2A",      // Borders
+          cyan: "#00E5FF",       // Action / Hover
+          gold: "#FFD700",       // Highlight / Warning
+          text: "#EDEDED",       // Primary Text
           muted: "#888888",      // Secondary Text
         },
       },
       fontFamily: {
-        sans: ["var(--font-rajdhani)", "sans-serif"], // Default for headers
-        mono: ["var(--font-mono)", "monospace"],      // Default for data
+        sans: ["var(--font-rajdhani)", "sans-serif"], 
+        mono: ["var(--font-space-mono)", "monospace"], 
       },
       backgroundImage: {
-        // The faint grid pattern (5% opacity white)
-        "grid-pattern": "linear-gradient(to right, #ffffff05 1px, transparent 1px), linear-gradient(to bottom, #ffffff05 1px, transparent 1px)",
+        "grid-pattern": "linear-gradient(to right, #2A2A2A 1px, transparent 1px), linear-gradient(to bottom, #2A2A2A 1px, transparent 1px)",
+      },
+      animation: {
+        "blink": "blink 2s infinite",
+      },
+      keyframes: {
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.4" },
+        },
       },
     },
   },
