@@ -99,7 +99,7 @@ export default function Connect() {
 
             {/* GitHub (Assuming placeholder or if you have one) */}
             <a 
-              href="https://github.com" 
+              href="https://github.com/ntjrrvarma" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center justify-between p-4 border border-brand-steel bg-brand-void/50 hover:border-brand-cyan hover:bg-brand-steel/20 transition-all group/link"
