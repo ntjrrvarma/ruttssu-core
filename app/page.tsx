@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
+import { FaArrowRight, FaExternalLinkAlt, FaFolderOpen } from "react-icons/fa";
 
-// BENTO CARD: No changes
+// BENTO CARD
 const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div className={`
     bg-brand-panel border border-brand-steel p-6 h-full
@@ -15,7 +15,7 @@ const BentoCard = ({ children, className = "" }: { children: React.ReactNode; cl
   </div>
 );
 
-// STAT BAR: No changes
+// STAT BAR
 const StatBar = ({ label, value }: { label: string; value: number }) => (
   <div className="mb-3">
     <div className="flex justify-between text-xs font-mono text-brand-muted mb-1">
@@ -33,37 +33,41 @@ const StatBar = ({ label, value }: { label: string; value: number }) => (
 
 export default function Dashboard() {
   return (
-    // LAYOUT FIX:
-    // 1. pt-[64px]: Hardcoded to match Navbar exactly.
-    // 2. h-[calc(100vh-64px)]: Forces container to take EXACTLY the remaining height.
-    // 3. overflow-hidden: Prevents the main page from scrolling (The cards scroll internally).
-    <div className="pt-[64px] px-4 md:px-6 pb-4 max-w-7xl mx-auto flex flex-col h-screen overflow-hidden">
+    <div className="pt-[64px] px-4 md:px-6 pb-4 max-w-7xl mx-auto flex flex-col min-h-screen md:h-screen overflow-hidden">
       
       {/* THE GRID SYSTEM */}
-      {/* REMOVED 'mt-4' - This was causing the gap! */}
       <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 flex-grow h-full pt-4">
 
-        {/* BLOCK A: IDENTITY */}
-        <BentoCard className="md:col-span-3 md:row-span-2 justify-between">
+        {/* BLOCK A: IDENTITY CORE (Now features YOUR NAME) */}
+        <BentoCard className="md:col-span-3 md:row-span-2 justify-between relative">
+          {/* Background Decor */}
+          <div className="absolute top-4 right-4 text-xs font-mono text-brand-muted/50 hidden md:block">
+            ID: R_NR_001 // VERIFIED
+          </div>
+
           <div>
             <div className="inline-block px-2 py-1 bg-brand-steel/30 text-brand-cyan font-mono text-xs mb-4">
-              // ENGINEER_PROFILE
+              // SYSTEM_ARCHITECT
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-sans font-bold uppercase tracking-tight text-white mb-2 leading-none">
-              BUILDING THE <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-600">FOUNDATION.</span>
+            {/* THE NEW MASSIVE HEADLINE */}
+            <h1 className="text-6xl md:text-8xl font-sans font-bold uppercase tracking-tighter text-white mb-0 leading-none">
+              RAHUL <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-600">N R</span>
             </h1>
             
-            <h2 className="text-lg md:text-xl text-brand-muted font-sans font-medium mb-6 mt-2">
-              Rahul N R <span className="text-brand-steel mx-2">//</span> Full Stack Engineer
-            </h2>
+            <div className="flex items-center gap-3 mt-4 mb-6">
+              <div className="h-[1px] w-12 bg-brand-cyan"></div>
+              <h2 className="text-lg md:text-xl text-brand-muted font-mono tracking-widest">
+                SENIOR_ENGINEER // FULL_STACK
+              </h2>
+            </div>
 
             <div className="max-w-xl text-brand-muted font-mono text-xs md:text-sm leading-relaxed border-l-2 border-brand-steel pl-4">
               <p>
                 Initiating R.U.T.T.S.S.U Protocol. Specialized in bridging backend logic with precision frontend UI.
               </p>
               <p className="mt-2 text-brand-text">
-                <span className="text-brand-cyan">{'>'} CURRENT_OBJECTIVE:</span> Building scalable cloud systems & minimalist digital environments.
+                <span className="text-brand-cyan">{'>'} CURRENT_STATUS:</span> Building scalable cloud systems & minimalist digital environments.
               </p>
             </div>
           </div>
@@ -101,7 +105,7 @@ export default function Dashboard() {
           </div>
         </BentoCard>
 
-        {/* BLOCK D: DRIVERS (Scrolls internally) */}
+        {/* BLOCK D: DRIVERS (Scrollable) */}
         <BentoCard className="md:col-span-1 md:row-span-2 overflow-y-auto custom-scrollbar">
           <h3 className="text-sm font-sans font-bold text-brand-cyan uppercase tracking-wider mb-6 sticky top-0 bg-brand-panel pb-2 z-10">
             {'>'} INSTALLED_DRIVERS
@@ -109,48 +113,71 @@ export default function Dashboard() {
           <div className="space-y-4">
             <StatBar label="NEXT_JS" value={95} />
             <StatBar label="TYPESCRIPT" value={90} />
+            <StatBar label="PYTHON" value={85} />
             <StatBar label="SUPABASE" value={85} />
             <StatBar label="TAILWIND" value={98} />
-            <StatBar label="NODE_JS" value={80} />
+            <StatBar label="AWS/GCP" value={75} />
           </div>
         </BentoCard>
 
-        {/* BLOCK C: ACTIVE MODULES (Scrolls internally) */}
-        <BentoCard className="md:col-span-2 overflow-y-auto custom-scrollbar">
+        {/* BLOCK C: DEPLOYMENT LOG (New Interaction) */}
+        <BentoCard className="md:col-span-2 relative group cursor-pointer overflow-hidden">
+           {/* The entire card is a link now */}
+           <Link href="/projects" className="absolute inset-0 z-20"></Link>
+
           <div className="flex items-center justify-between mb-4 sticky top-0 bg-brand-panel pb-2 z-10">
-            <h3 className="text-sm font-sans font-bold text-brand-gold uppercase tracking-wider">
-              {'>'} ACTIVE_MODULES
+            <h3 className="text-sm font-sans font-bold text-brand-gold uppercase tracking-wider flex items-center gap-2">
+              <FaFolderOpen /> {'>'} DEPLOYMENT_LOG
             </h3>
-            <Link href="/projects" className="text-xs font-mono text-brand-muted hover:text-white hover:underline">
-              [SYSTEM_INDEX]
-            </Link>
+            <span className="text-xs font-mono text-brand-cyan group-hover:underline">
+              [ ENTER_DIRECTORY ]
+            </span>
           </div>
           
           <div className="space-y-4 font-mono text-xs">
-            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors cursor-default">
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-brand-cyan font-bold">RUTTSSU_OS</span>
-                <span className="text-green-500">[DEPLOYED]</span>
+            {/* Project 1 */}
+            <div className="flex justify-between items-center border-l-2 border-brand-steel pl-3 group-hover:border-brand-cyan transition-colors">
+              <div>
+                <span className="text-brand-text font-bold block mb-1">RUTTSSU_OS</span>
+                <span className="text-brand-muted">Personal Operating System v1.0</span>
               </div>
-              <p className="text-brand-muted leading-relaxed line-clamp-2">
-                LOG: Personal Operating System v1.0. Engineered with Next.js 15.
-              </p>
+              <span className="text-green-500 bg-green-500/10 px-2 py-1 rounded-[2px] text-[10px]">
+                DEPLOYED
+              </span>
             </div>
-            <div className="group/item border-l-2 border-brand-steel pl-3 hover:border-brand-cyan transition-colors cursor-default">
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-brand-cyan font-bold">BIFROST_ENGINE</span>
-                <span className="text-blue-400">[INTERNAL]</span>
+
+            {/* Project 2 */}
+            <div className="flex justify-between items-center border-l-2 border-brand-steel pl-3 group-hover:border-brand-cyan transition-colors">
+              <div>
+                <span className="text-brand-text font-bold block mb-1">BIFROST_ENGINE</span>
+                <span className="text-brand-muted">Serverless URL redirection unit</span>
               </div>
-              <p className="text-brand-muted leading-relaxed line-clamp-2">
-                LOG: Serverless URL redirection unit. Database managed via Supabase.
-              </p>
+              <span className="text-blue-400 bg-blue-400/10 px-2 py-1 rounded-[2px] text-[10px]">
+                INTERNAL
+              </span>
             </div>
+
+             {/* Project 3 */}
+             <div className="flex justify-between items-center border-l-2 border-brand-steel pl-3 group-hover:border-brand-cyan transition-colors">
+              <div>
+                <span className="text-brand-text font-bold block mb-1">TASK_MATRIX</span>
+                <span className="text-brand-muted">Collaborative management dashboard</span>
+              </div>
+              <span className="text-brand-muted border border-brand-muted px-2 py-1 rounded-[2px] text-[10px]">
+                ARCHIVED
+              </span>
+            </div>
+          </div>
+
+          {/* Hover Overlay Hint */}
+          <div className="absolute bottom-4 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+             <FaArrowRight className="text-brand-cyan text-xl" />
           </div>
         </BentoCard>
 
         {/* BLOCK E: UPLINK */}
         <BentoCard className="md:col-span-1 flex-row items-center justify-center gap-4 cursor-pointer hover:bg-brand-steel/20 group">
-            <Link href="/connect" className="text-center w-full h-full flex flex-col items-center justify-center">
+            <Link href="/connect" className="text-center w-full h-full flex flex-col items-center justify-center relative z-20">
               <div className="text-brand-cyan text-2xl mb-2 group-hover:scale-110 transition-transform">
                 <FaExternalLinkAlt />
               </div>
