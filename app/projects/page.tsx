@@ -9,26 +9,27 @@ const PROJECTS = [
     category: "SYSTEM",
     status: "DEPLOYED",
     tech: ["Next.js 15", "Tailwind", "TypeScript"],
-    desc: "LOG: Personal Operating System v1.0. Engineered with a custom Bento Grid architecture and zero-latency routing. Acts as the central command hub for all digital assets.",
-    links: { demo: "https://ruttssu-core.vercel.app", repo: "https://github.com/rahulnr/ruttssu-core" }
+    desc: "LOG: Personal Operating System v1.0. Engineered with a custom Bento Grid architecture...",
+    // UPDATE THE REPO LINK BELOW:
+    links: { demo: "https://ruttssu-core.vercel.app", repo: "https://github.com/ntjrrvarma/ruttssu-core" } 
   },
   {
     id: "02",
-    title: "BIFROST_ENGINE",
+    title: "Dolphin Chat Interface",
     category: "BACKEND",
     status: "INTERNAL",
-    tech: ["Supabase", "Node.js", "PostgreSQL"],
-    desc: "LOG: High-performance URL redirection service. Handles request routing with <50ms latency. Built to manage internal link shortening and analytics tracking.",
-    links: { demo: "#", repo: "#" }
+    tech: ["Python","Ollama"],
+    desc: "LOG: High-performance Chat bot designed using the Dolphin Mistral Model to run locally on any system.",
+    links: {  repo: "https://github.com/ntjrrvarma/Dolphin-talks" }
   },
   {
     id: "03",
-    title: "TASK_MATRIX",
+    title: "Empire V1 - Personal Password Vault",
     category: "WEB_APP",
-    status: "ARCHIVED",
-    tech: ["React", "Redux", "Firebase"],
-    desc: "LOG: Collaborative project management dashboard. Features real-time state synchronization and role-based access control (RBAC).",
-    links: { demo: "#", repo: "#" }
+    status: "DEPLOYED",
+    tech: ["Typescript", "Javascript", "CSS"],
+    desc: "LOG: Empire V1 is a secure, personal password management application designed to store and retrieve credentials efficiently. It serves as a foundational project to explore CRUD operations, Database Management, and Frontend-Backend Integration.",
+    links: { demo: "https://empire-v1-rsv.vercel.app/", repo: "https://github.com/ntjrrvarma/empire-v1" }
   }
 ];
 

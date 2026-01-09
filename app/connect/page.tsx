@@ -98,23 +98,24 @@ export default function Connect() {
             </a>
 
             {/* GitHub (Assuming placeholder or if you have one) */}
-            <a 
-              href="https://github.com/ntjrrvarma" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 border border-brand-steel bg-brand-void/50 hover:border-brand-cyan hover:bg-brand-steel/20 transition-all group/link"
-            >
-              <div className="flex items-center gap-4">
-                <FaGithub className="text-2xl text-brand-muted group-hover/link:text-brand-cyan transition-colors" />
-                <div>
-                  <div className="text-xs font-mono text-brand-muted">GITHUB_REPO</div>
-                  <div className="text-sm font-bold text-white">/rahulnr</div>
-                </div>
-              </div>
-              <div className="text-brand-cyan opacity-0 group-hover/link:opacity-100 transition-opacity">
-                {'>'}
-              </div>
-            </a>
+            {/* GitHub Signal Channel */}
+<a 
+  href="https://github.com/ntjrrvarma"  // <--- UPDATE THIS LINK
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="flex items-center justify-between p-4 border border-brand-steel bg-brand-void/50 hover:border-brand-cyan hover:bg-brand-steel/20 transition-all group/link"
+>
+  <div className="flex items-center gap-4">
+    <FaGithub className="text-2xl text-brand-muted group-hover/link:text-brand-cyan transition-colors" />
+    <div>
+      <div className="text-xs font-mono text-brand-muted">GITHUB_REPO</div>
+      <div className="text-sm font-bold text-white">/ntjrrvarma</div> {/* <--- UPDATE THIS TEXT */}
+    </div>
+  </div>
+  <div className="text-brand-cyan opacity-0 group-hover/link:opacity-100 transition-opacity">
+    {'>'}
+  </div>
+</a>
           </div>
         </div>
 
