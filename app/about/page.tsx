@@ -85,9 +85,12 @@ export default function About() {
               <p>
                 <span className="text-brand-text font-bold">IDENTITY:</span> Rahul N R
               </p>
+              
+              {/* HYBRID TITLE: TRUTHFUL BUT ASPIRATIONAL */}
               <p>
-                <span className="text-brand-text font-bold">CLASS:</span> Sr. Reliability Engineer
+                <span className="text-brand-text font-bold">CLASS:</span> Senior Engineer (SRE & Full Stack)
               </p>
+              
               <p className="flex items-center gap-2">
                 <FaMapMarkerAlt /> <span className="text-brand-gold">Chennai, India</span>
               </p>
@@ -98,10 +101,10 @@ export default function About() {
                 <span className="text-brand-cyan font-bold">{'>'} MISSION PROFILE:</span>
               </p>
               <p>
-                I don&apos;t just write code; I engineer stability. With 7+ years in high-stakes environments, I specialize in automating the &quot;boring stuff&quot; to focus on high-impact architecture.
+                Leveraging 7+ years of expertise in Reliability Engineering to build resilient, scalable products. I combine deep infrastructure knowledge (Python/Automation) with modern web architecture (Next.js/Cloud).
               </p>
               <p>
-                Currently bridging the gap between <span className="text-white">Enterprise Reliability</span> (Python/Automation) and <span className="text-white">Modern Product Engineering</span> (Next.js/Cloud).
+                <span className="text-white">Objective:</span> To engineer systems that are not just stable, but intuitive and powerful.
               </p>
             </div>
           </div>
