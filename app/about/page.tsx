@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaArrowLeft, FaTerminal, FaHistory, FaDownload, FaMapMarkerAlt, FaGlobe, FaGraduationCap, FaServer, FaCode, FaRobot } from "react-icons/fa";
 
-[cite_start]// REAL DATA FROM RESUME [cite: 14, 49]
+// REAL DATA FROM RESUME
 const EXPERIENCE = [
   {
     id: "01",
@@ -37,7 +37,7 @@ const EXPERIENCE = [
   }
 ];
 
-[cite_start]// EXPANDED SKILLS FROM RESUME & CONTEXT [cite: 56, 57, 58, 59, 60]
+// EXPANDED SKILLS
 const SKILLS = {
   AUTOMATION_CORE: ["Python (Advanced)", "Shell/Bash Scripting", "Log Parsing & Regex", "Auto-Remediation", "Cron Jobs"],
   CLOUD_INFRA: ["Linux/Unix Admin", "AWS (EC2/S3)", "GCP (GKE/Functions)", "Docker & Containers", "File System Mgmt"],
@@ -73,7 +73,6 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
         
         {/* 2. LEFT PANEL: THE SPECS (Sticky Sidebar) */}
-        {/* Added 'sticky top-24' so it scrolls with you */}
         <div className="md:col-span-1 space-y-6 md:sticky md:top-24 h-fit">
           
           {/* SYSTEM BIO CARD */}
@@ -95,12 +94,11 @@ export default function About() {
               
               <div className="w-full h-[1px] bg-brand-steel my-4"></div>
               
-              {/* THE IMPRESSIVE BIO */}
               <p className="text-brand-text">
                 <span className="text-brand-cyan font-bold">{'>'} MISSION PROFILE:</span>
               </p>
               <p>
-                I don't just write code; I engineer stability. With 7+ years in high-stakes environments, I specialize in automating the "boring stuff" to focus on high-impact architecture.
+                I don&apos;t just write code; I engineer stability. With 7+ years in high-stakes environments, I specialize in automating the &quot;boring stuff&quot; to focus on high-impact architecture.
               </p>
               <p>
                 Currently bridging the gap between <span className="text-white">Enterprise Reliability</span> (Python/Automation) and <span className="text-white">Modern Product Engineering</span> (Next.js/Cloud).
@@ -203,7 +201,7 @@ export default function About() {
                 </div>
               ))}
               
-              [cite_start]{/* EDUCATION BLOCK [cite: 45, 46] */}
+              {/* EDUCATION BLOCK */}
               <div className="mt-12 pt-8 border-t border-brand-steel/30">
                 <h3 className="text-sm font-sans font-bold text-white uppercase tracking-wider mb-8 flex items-center gap-2">
                   <FaGraduationCap className="text-brand-cyan" /> // KNOWLEDGE_BASE
