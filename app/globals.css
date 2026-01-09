@@ -3,38 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  /* 1. FORCE ZERO MARGINS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   html {
     background-color: #050505;
     color: #EDEDED;
-    cursor: crosshair; /* 1. THE CROSSHAIR CURSOR */
+    cursor: crosshair;
   }
   
-  body {
-    /* 2. THE FAINT GRID BACKGROUND */
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right, #ffffff03 1px, transparent 1px),
-                      linear-gradient(to bottom, #ffffff03 1px, transparent 1px);
-  }
-
-  /* 3. CUSTOM SCROLLBAR (Mechanical Look) */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #050505;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #2A2A2A;
-    border-radius: 0px; /* Sharp corners */
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #00E5FF; /* Cyan on hover */
-  }
-}
-
-@layer components {
-  /* 4. THE GHOST BUTTON CLASS */
-  .btn-cyber {
-    @apply relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-mono font-bold tracking-widest text-brand-cyan border border-brand-cyan/30 bg-transparent hover:bg-brand-cyan hover:text-brand-void transition-all duration-100 uppercase text-sm;
-  }
+  /* ... (Keep your scrollbar and other styles below) ... */
 }

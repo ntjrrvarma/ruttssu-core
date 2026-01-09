@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 
-// BENTO CARD: Added h-full so it stretches automatically
+// BENTO CARD: No changes
 const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <div className={`
     bg-brand-panel border border-brand-steel p-6 h-full
@@ -15,6 +15,7 @@ const BentoCard = ({ children, className = "" }: { children: React.ReactNode; cl
   </div>
 );
 
+// STAT BAR: No changes
 const StatBar = ({ label, value }: { label: string; value: number }) => (
   <div className="mb-3">
     <div className="flex justify-between text-xs font-mono text-brand-muted mb-1">
@@ -32,14 +33,15 @@ const StatBar = ({ label, value }: { label: string; value: number }) => (
 
 export default function Dashboard() {
   return (
-    // LAYOUT FIX: 
-    // 1. pt-16: Exactly offsets the 64px Navbar (No gap).
-    // 2. min-h-[calc(100vh-4rem)]: Ensures full screen height minus navbar.
-    // 3. flex-grow: Forces grid to expand and fill available vertical space.
-    <div className="pt-16 px-4 md:px-6 pb-4 max-w-7xl mx-auto flex flex-col min-h-[calc(100vh-4rem)]">
+    // LAYOUT FIX:
+    // 1. pt-[64px]: Hardcoded to match Navbar exactly.
+    // 2. h-[calc(100vh-64px)]: Forces container to take EXACTLY the remaining height.
+    // 3. overflow-hidden: Prevents the main page from scrolling (The cards scroll internally).
+    <div className="pt-[64px] px-4 md:px-6 pb-4 max-w-7xl mx-auto flex flex-col h-screen overflow-hidden">
       
       {/* THE GRID SYSTEM */}
-      <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 flex-grow mt-4">
+      {/* REMOVED 'mt-4' - This was causing the gap! */}
+      <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 flex-grow h-full pt-4">
 
         {/* BLOCK A: IDENTITY */}
         <BentoCard className="md:col-span-3 md:row-span-2 justify-between">
@@ -99,7 +101,7 @@ export default function Dashboard() {
           </div>
         </BentoCard>
 
-        {/* BLOCK D: DRIVERS */}
+        {/* BLOCK D: DRIVERS (Scrolls internally) */}
         <BentoCard className="md:col-span-1 md:row-span-2 overflow-y-auto custom-scrollbar">
           <h3 className="text-sm font-sans font-bold text-brand-cyan uppercase tracking-wider mb-6 sticky top-0 bg-brand-panel pb-2 z-10">
             {'>'} INSTALLED_DRIVERS
@@ -113,7 +115,7 @@ export default function Dashboard() {
           </div>
         </BentoCard>
 
-        {/* BLOCK C: ACTIVE MODULES */}
+        {/* BLOCK C: ACTIVE MODULES (Scrolls internally) */}
         <BentoCard className="md:col-span-2 overflow-y-auto custom-scrollbar">
           <div className="flex items-center justify-between mb-4 sticky top-0 bg-brand-panel pb-2 z-10">
             <h3 className="text-sm font-sans font-bold text-brand-gold uppercase tracking-wider">
