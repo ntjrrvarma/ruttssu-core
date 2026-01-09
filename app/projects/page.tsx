@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
 
@@ -9,40 +12,55 @@ const PROJECTS = [
     category: "SYSTEM",
     status: "DEPLOYED",
     tech: ["Next.js 15", "Tailwind", "TypeScript"],
-    desc: "LOG: Personal Operating System v1.0. Engineered with a custom Bento Grid architecture...",
-    // UPDATE THE REPO LINK BELOW:
+    desc: "LOG: Personal Operating System v1.0. Engineered with a custom Bento Grid architecture to serve as a central command hub for all developer activities.",
     links: { demo: "https://ruttssu-core.vercel.app", repo: "https://github.com/ntjrrvarma/ruttssu-core" } 
+  },
+  {
+    id: "05", // NEW MODULE ADDED
+    title: "TASK_MATRIX_V2",
+    category: "WEB_APP",
+    status: "INTERNAL", 
+    tech: ["Supabase", "React State", "PostgreSQL"],
+    desc: "LOG: A sci-fi inspired Kanban board for managing mission objectives. Features real-time state synchronization via Supabase and dynamic filtering logic.",
+    links: { demo: "/projects/task-matrix", repo: "https://github.com/ntjrrvarma/ruttssu-core" } 
+  },
+  {
+    id: "04",
+    title: "BIFROST_ENGINE",
+    category: "BACKEND",
+    status: "INTERNAL", 
+    tech: ["Supabase", "Node.js", "Edge Functions"],
+    desc: "LOG: High-performance URL redirection service. Handles request routing with <50ms latency using Edge Middleware and Supabase lookups.",
+    links: { demo: "/projects/bifrost", repo: "https://github.com/ntjrrvarma/ruttssu-core" } 
+  },
+  {
+    id: "03",
+    title: "Empire V1 - Vault",
+    category: "WEB_APP",
+    status: "DEPLOYED",
+    tech: ["Typescript", "Javascript", "CSS"],
+    desc: "LOG: Secure personal password management application designed to store and retrieve credentials efficiently. Explores foundational CRUD operations and encryption.",
+    links: { demo: "https://empire-v1-rsv.vercel.app/", repo: "https://github.com/ntjrrvarma/empire-v1" }
   },
   {
     id: "02",
     title: "Dolphin Chat Interface",
     category: "BACKEND",
     status: "INTERNAL",
-    tech: ["Python","Ollama"],
-    desc: "LOG: High-performance Chat bot designed using the Dolphin Mistral Model to run locally on any system.",
-    links: {  repo: "https://github.com/ntjrrvarma/Dolphin-talks" }
-  },
-  {
-    id: "03",
-    title: "Empire V1 - Personal Password Vault",
-    category: "WEB_APP",
-    status: "DEPLOYED",
-    tech: ["Typescript", "Javascript", "CSS"],
-    desc: "LOG: Empire V1 is a secure, personal password management application designed to store and retrieve credentials efficiently. It serves as a foundational project to explore CRUD operations, Database Management, and Frontend-Backend Integration.",
-    links: { demo: "https://empire-v1-rsv.vercel.app/", repo: "https://github.com/ntjrrvarma/empire-v1" }
-},
-  {
-    id: "04",
-    title: "Project Bifrost",
-    category: "FRONTEND",
-    status: "DEPLOYED",
-    tech: ["Typescript","Supabase"],
-    desc: "LOG: High-performance Chat bot designed using the Dolphin Mistral Model to run locally on any system.",
-    links: { demo: "https://ruttssu-core.vercel.app/projects/bifrost", repo: "https://github.com/ntjrrvarma/ruttssu-core" } 
-  },
+    tech: ["Python", "Ollama", "LLM"],
+    desc: "LOG: High-performance Chat bot designed using the Dolphin Mistral Model to run locally on any system. Focuses on offline AI capabilities.",
+    links: { demo: "#", repo: "https://github.com/ntjrrvarma/Dolphin-talks" }
+  }
 ];
 
 export default function Projects() {
+  const [filter, setFilter] = useState("ALL");
+
+  // Filter Logic
+  const filteredProjects = filter === "ALL" 
+    ? PROJECTS 
+    : PROJECTS.filter(p => p.category.includes(filter) || p.category === filter);
+
   return (
     <div className="min-h-screen pt-24 px-4 md:px-8 pb-12 max-w-7xl mx-auto flex flex-col">
       
@@ -60,17 +78,20 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* TABS (Visual Only) */}
+        {/* TABS (Now Functional) */}
         <div className="flex gap-1 mt-6 md:mt-0 font-mono text-xs overflow-x-auto no-scrollbar">
-          {["ALL", "SYSTEMS", "WEB", "DESIGN"].map((filter, i) => (
+          {["ALL", "SYSTEM", "WEB_APP", "BACKEND"].map((cat) => (
             <button 
-              key={filter}
+              key={cat}
+              onClick={() => setFilter(cat)}
               className={`
-                px-4 py-2 border border-brand-steel transition-all
-                ${i === 0 ? "bg-brand-cyan text-brand-void font-bold" : "text-brand-muted hover:text-white hover:border-brand-cyan"}
+                px-4 py-2 border transition-all whitespace-nowrap
+                ${filter === cat 
+                  ? "bg-brand-cyan border-brand-cyan text-brand-void font-bold" 
+                  : "border-brand-steel text-brand-muted hover:text-white hover:border-brand-cyan bg-brand-void"}
               `}
             >
-              [{filter}]
+              [{cat.replace("_", " ")}]
             </button>
           ))}
         </div>
@@ -78,7 +99,7 @@ export default function Projects() {
 
       {/* PROJECT GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {PROJECTS.map((project) => (
+        {filteredProjects.map((project) => (
           <div 
             key={project.id} 
             className="group bg-brand-panel border border-brand-steel p-6 hover:border-brand-cyan transition-colors duration-200 flex flex-col h-full relative overflow-hidden"
@@ -121,12 +142,30 @@ export default function Projects() {
 
             {/* Actions */}
             <div className="grid grid-cols-2 gap-3 mt-auto">
-              <a href={project.links.repo} className="flex items-center justify-center gap-2 border border-brand-steel py-2 text-xs font-mono text-brand-muted hover:text-white hover:bg-brand-steel/20 transition-colors">
+              <a 
+                href={project.links.repo} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 border border-brand-steel py-2 text-xs font-mono text-brand-muted hover:text-white hover:bg-brand-steel/20 transition-colors"
+              >
                 <FaGithub /> SOURCE_CODE
               </a>
-              <a href={project.links.demo} className="flex items-center justify-center gap-2 bg-brand-steel/20 border border-brand-steel py-2 text-xs font-mono text-brand-cyan hover:bg-brand-cyan hover:text-brand-void transition-colors font-bold">
-                <FaExternalLinkAlt /> LAUNCH_UNIT
-              </a>
+              
+              {/* Only show Launch button if link exists and isn't # */}
+              {project.links.demo && project.links.demo !== "#" ? (
+                <a 
+                  href={project.links.demo} 
+                  target={project.links.demo.startsWith("http") ? "_blank" : "_self"} // Open internal links in same tab, external in new
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-brand-steel/20 border border-brand-steel py-2 text-xs font-mono text-brand-cyan hover:bg-brand-cyan hover:text-brand-void transition-colors font-bold"
+                >
+                  <FaExternalLinkAlt /> LAUNCH_UNIT
+                </a>
+              ) : (
+                <button disabled className="flex items-center justify-center gap-2 border border-brand-steel/30 py-2 text-xs font-mono text-brand-muted/50 cursor-not-allowed">
+                  [ OFFLINE ]
+                </button>
+              )}
             </div>
 
           </div>
