@@ -30,7 +30,16 @@ const PROJECTS = [
     tech: ["Typescript", "Javascript", "CSS"],
     desc: "LOG: Empire V1 is a secure, personal password management application designed to store and retrieve credentials efficiently. It serves as a foundational project to explore CRUD operations, Database Management, and Frontend-Backend Integration.",
     links: { demo: "https://empire-v1-rsv.vercel.app/", repo: "https://github.com/ntjrrvarma/empire-v1" }
-  }
+},
+  {
+    id: "04",
+    title: "Project Bifrost",
+    category: "FRONTEND",
+    status: "DEPLOYED",
+    tech: ["Typescript","Supabase"],
+    desc: "LOG: High-performance Chat bot designed using the Dolphin Mistral Model to run locally on any system.",
+    links: { demo: "https://ruttssu-core.vercel.app/projects/bifrost", repo: "https://github.com/ntjrrvarma/ruttssu-core" } 
+  },
 ];
 
 export default function Projects() {
