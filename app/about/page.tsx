@@ -64,10 +64,16 @@ export default function About() {
           </p>
         </div>
         
-        {/* RESUME BUTTON */}
-        <button className="mt-6 md:mt-0 flex items-center gap-2 bg-brand-steel/20 border border-brand-steel px-6 py-3 font-mono text-xs text-brand-cyan hover:bg-brand-cyan hover:text-brand-void transition-all uppercase font-bold group">
+        {/* RESUME BUTTON (Now functional) */}
+        <a 
+          href="/Rahul_NR_Resume.pdf" 
+          download="Rahul_NR_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 md:mt-0 flex items-center gap-2 bg-brand-steel/20 border border-brand-steel px-6 py-3 font-mono text-xs text-brand-cyan hover:bg-brand-cyan hover:text-brand-void transition-all uppercase font-bold group"
+        >
           <FaDownload className="group-hover:animate-bounce" /> [ EXPORT_DATA_SHEET ]
-        </button>
+        </a>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
@@ -86,7 +92,7 @@ export default function About() {
                 <span className="text-brand-text font-bold">IDENTITY:</span> Rahul N R
               </p>
               
-              {/* HYBRID TITLE: TRUTHFUL BUT ASPIRATIONAL */}
+              {/* HYBRID TITLE */}
               <p>
                 <span className="text-brand-text font-bold">CLASS:</span> Senior Engineer (SRE & Full Stack)
               </p>
