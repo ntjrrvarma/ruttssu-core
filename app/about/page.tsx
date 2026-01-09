@@ -1,38 +1,46 @@
 import Link from "next/link";
-import { FaArrowLeft, FaTerminal, FaHistory, FaDownload, FaMapMarkerAlt, FaGlobe } from "react-icons/fa";
+import { FaArrowLeft, FaTerminal, FaHistory, FaDownload, FaMapMarkerAlt, FaGlobe, FaGraduationCap } from "react-icons/fa";
 
-// MOCK DATA: UPDATE THIS WITH YOUR REAL INFO
+// REAL DATA FROM RESUME
 const EXPERIENCE = [
   {
     id: "01",
-    role: "SENIOR_ENGINEER",
-    company: "TECH_CORP_ALPHA",
-    date: "2023 - PRESENT",
+    role: "CONSULTANT (SR. AUTOMATION & RELIABILITY ENGR)",
+    company: "INFOSYS_LTD",
+    date: "JAN 2025 - PRESENT",
     type: "FULL_TIME",
-    log: "Leading the migration of legacy monoliths to microservices. Optimized database queries reducing latency by 40%. Directing a squad of 4 junior units."
+    log: "Architected a Python-based automated troubleshooting protocol, parsing complex error logs to suggest instant fixes. Reduced L1 support ticket volume by 40%. Leading a squad of 3 engineers to define support workflows."
   },
   {
     id: "02",
-    role: "FULL_STACK_DEV",
-    company: "STARTUP_BETA",
-    date: "2021 - 2023",
+    role: "SR. ASSOCIATE CONSULTANT (SYS_OPS)",
+    company: "INFOSYS_LTD",
+    date: "APR 2023 - JAN 2025",
     type: "FULL_TIME",
-    log: "Engineered the core payment gateway integration using Stripe. Built reusable React component library used across 3 products."
+    log: "Managed critical infrastructure across 50+ Unix instances. Implemented predictive monitoring scripts (Python/Bash) maintaining 100% SLA adherence. Led RCA efforts reducing recurring incidents by 30%."
   },
   {
     id: "03",
-    role: "JUNIOR_DEV",
-    company: "STUDIO_GAMMA",
-    date: "2020 - 2021",
-    type: "CONTRACT",
-    log: "Assisted in frontend UI development using React and Tailwind. Fixed critical bugs in the authentication flow."
+    role: "ASSOCIATE CONSULTANT (AUTOMATION)",
+    company: "INFOSYS_LTD",
+    date: "JAN 2022 - APR 2023",
+    type: "FULL_TIME",
+    log: "Engineered complex Python automation scripts for retrospective reporting, cutting manual data prep time by 90%. Executed schema validation across legacy databases to ensure data integrity."
+  },
+  {
+    id: "04",
+    role: "SENIOR SYSTEMS ENGINEER",
+    company: "INFOSYS_LTD",
+    date: "DEC 2018 - DEC 2021",
+    type: "FULL_TIME",
+    log: "Maintained mission-critical legacy mainframe systems supporting millions of users. Modernized manual reporting into an automated dashboard using Python log parsing."
   }
 ];
 
 const SKILLS = {
-  CORE: ["Next.js 15", "React", "TypeScript", "Node.js", "Tailwind CSS"],
-  BACKEND: ["Supabase", "PostgreSQL", "Prisma", "AWS (EC2/S3)", "Docker"],
-  TOOLS: ["Git", "Figma", "Vercel", "Postman", "Linux"]
+  AUTOMATION_OPS: ["Python (Advanced)", "Shell/Bash", "Linux/Unix Admin", "GCP/AWS", "Docker/GKE"],
+  WEB_STACK: ["Next.js 15", "TypeScript", "React", "Supabase", "Tailwind CSS"],
+  TOOLS: ["JIRA", "ServiceNow", "Git", "Postman", "SQL"]
 };
 
 export default function About() {
@@ -75,15 +83,15 @@ export default function About() {
                 <span className="text-brand-text font-bold">IDENTITY:</span> Rahul N R
               </p>
               <p>
-                <span className="text-brand-text font-bold">CLASS:</span> Full Stack Engineer
+                <span className="text-brand-text font-bold">CLASS:</span> Sr. Reliability Engineer
               </p>
               <p className="flex items-center gap-2">
-                <FaMapMarkerAlt /> <span className="text-brand-gold">Chennai, India (13.08°N, 80.27°E)</span>
+                <FaMapMarkerAlt /> <span className="text-brand-gold">Chennai, India</span>
               </p>
               <div className="w-full h-[1px] bg-brand-steel my-4"></div>
               <p>
-                Passionate about building scalable systems and minimalist interfaces. 
-                Currently upgrading architecture skills to bridge the gap between code and cloud infrastructure.
+                7+ years driving Operational Excellence. Expert in Incident Management, RCA, and Production Support. 
+                Specialized in reducing MTTR by building Python-based automation tools that eliminate operational toil.
               </p>
             </div>
           </div>
@@ -97,9 +105,9 @@ export default function About() {
             
             <div className="space-y-4">
               <div>
-                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase">Core_Dependencies</div>
+                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase">Automation_&_Ops</div>
                 <div className="flex flex-wrap gap-2">
-                  {SKILLS.CORE.map(s => (
+                  {SKILLS.AUTOMATION_OPS.map(s => (
                     <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan transition-colors cursor-crosshair">
                       {s}
                     </span>
@@ -108,9 +116,9 @@ export default function About() {
               </div>
               
               <div>
-                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase">Backend_Modules</div>
+                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase">Full_Stack_Dev</div>
                 <div className="flex flex-wrap gap-2">
-                  {SKILLS.BACKEND.map(s => (
+                  {SKILLS.WEB_STACK.map(s => (
                     <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan transition-colors cursor-crosshair">
                       {s}
                     </span>
@@ -140,7 +148,7 @@ export default function About() {
                   
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                     <h4 className="text-lg font-sans font-bold text-white group-hover/item:text-brand-cyan transition-colors">
-                      {job.role} <span className="text-brand-muted text-sm font-normal">@ {job.company}</span>
+                      {job.role}
                     </h4>
                     <span className="font-mono text-xs text-brand-gold bg-brand-gold/10 px-2 py-1 rounded-[2px]">
                       [{job.date}]
@@ -148,7 +156,7 @@ export default function About() {
                   </div>
                   
                   <div className="text-xs font-mono text-brand-muted mb-2">
-                    TYPE: {job.type}
+                    @ {job.company}
                   </div>
                   
                   <p className="text-sm font-mono text-brand-text leading-relaxed opacity-80 group-hover/item:opacity-100 transition-opacity">
@@ -157,15 +165,29 @@ export default function About() {
                 </div>
               ))}
               
-              {/* Education Block (Static for now) */}
-              <div className="relative group/item pt-8">
-                <div className="absolute -left-[37px] top-9 w-4 h-4 rounded-full bg-brand-void border-2 border-brand-steel group-hover/item:border-green-500 group-hover/item:bg-green-500 transition-colors"></div>
-                <h4 className="text-lg font-sans font-bold text-white">
-                  B.TECH COMPUTER SCIENCE <span className="text-brand-muted text-sm font-normal">@ UNIVERSITY_NAME</span>
-                </h4>
-                 <span className="font-mono text-xs text-green-500 mt-1 block">
-                  [STATUS: COMPLETED]
-                </span>
+              {/* EDUCATION BLOCK */}
+              <div className="mt-12 pt-8 border-t border-brand-steel/30">
+                <h3 className="text-sm font-sans font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-2">
+                  <FaGraduationCap className="text-brand-cyan" /> // KNOWLEDGE_BASE
+                </h3>
+                
+                <div className="space-y-6">
+                  <div className="relative group/item">
+                     <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+                        <h4 className="text-sm font-sans font-bold text-brand-text">MBA (HUMAN RESOURCES)</h4>
+                        <span className="text-[10px] font-mono text-brand-muted">2025 - 2027 (PURSUING)</span>
+                     </div>
+                     <p className="text-xs font-mono text-brand-muted mt-1">SRM Institute of Science and Technology</p>
+                  </div>
+                  
+                  <div className="relative group/item">
+                     <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+                        <h4 className="text-sm font-sans font-bold text-brand-text">B.TECH, COMPUTER SCIENCE</h4>
+                        <span className="text-[10px] font-mono text-brand-muted">2014 - 2018</span>
+                     </div>
+                     <p className="text-xs font-mono text-brand-muted mt-1">Dr. M.G.R. Educational and Research Institute</p>
+                  </div>
+                </div>
               </div>
 
             </div>
