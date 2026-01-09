@@ -24,7 +24,7 @@ const config: Config = {
         mono: ["var(--font-space-mono)", "monospace"], 
       },
       backgroundImage: {
-        "grid-pattern": "linear-gradient(to right, #2A2A2A 1px, transparent 1px), linear-gradient(to bottom, #2A2A2A 1px, transparent 1px)",
+        "grid-pattern": "linear-gradient(to right, #ffffff05 1px, transparent 1px), linear-gradient(to bottom, #ffffff05 1px, transparent 1px)",
       },
       animation: {
         "blink": "blink 2s infinite",

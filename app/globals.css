@@ -18,3 +18,14 @@
   
   /* ... (Keep your scrollbar and other styles below) ... */
 }
+
+@layer utilities {
+  /* HIDE SCROLLBARS BUT KEEP SCROLLING */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}

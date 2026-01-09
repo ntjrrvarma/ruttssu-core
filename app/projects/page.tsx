@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
 
-// MOCK DATA: We will eventually fetch this from Supabase
+// MOCK DATA: This is your "Archive"
 const PROJECTS = [
   {
     id: "01",
@@ -10,7 +10,7 @@ const PROJECTS = [
     status: "DEPLOYED",
     tech: ["Next.js 15", "Tailwind", "TypeScript"],
     desc: "LOG: Personal Operating System v1.0. Engineered with a custom Bento Grid architecture and zero-latency routing. Acts as the central command hub for all digital assets.",
-    links: { demo: "#", repo: "#" }
+    links: { demo: "https://ruttssu-core.vercel.app", repo: "https://github.com/rahulnr/ruttssu-core" }
   },
   {
     id: "02",
@@ -23,29 +23,20 @@ const PROJECTS = [
   },
   {
     id: "03",
-    title: "TASK_MATRIX_V2",
+    title: "TASK_MATRIX",
     category: "WEB_APP",
-    status: "MAINTENANCE",
+    status: "ARCHIVED",
     tech: ["React", "Redux", "Firebase"],
     desc: "LOG: Collaborative project management dashboard. Features real-time state synchronization and role-based access control (RBAC).",
-    links: { demo: "#", repo: "#" }
-  },
-  {
-    id: "04",
-    title: "NEURAL_GALLERY",
-    category: "DESIGN",
-    status: "CONCEPT",
-    tech: ["Three.js", "WebGL", "GSAP"],
-    desc: "LOG: Experimental 3D asset viewer. Utilizing WebGL for hardware-accelerated rendering of architectural models in the browser.",
     links: { demo: "#", repo: "#" }
   }
 ];
 
 export default function Projects() {
   return (
-    <div className="min-h-screen pt-24 px-4 md:px-8 pb-12 max-w-7xl mx-auto">
+    <div className="min-h-screen pt-24 px-4 md:px-8 pb-12 max-w-7xl mx-auto flex flex-col">
       
-      {/* 1. HEADER SECTION */}
+      {/* HEADER SECTION */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-brand-steel pb-6">
         <div>
           <Link href="/" className="text-xs font-mono text-brand-muted hover:text-brand-cyan mb-4 inline-flex items-center gap-2 transition-colors">
@@ -59,8 +50,8 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* 2. FILTER TABS (Visual Only for now) */}
-        <div className="flex gap-1 mt-6 md:mt-0 font-mono text-xs overflow-x-auto">
+        {/* TABS (Visual Only) */}
+        <div className="flex gap-1 mt-6 md:mt-0 font-mono text-xs overflow-x-auto no-scrollbar">
           {["ALL", "SYSTEMS", "WEB", "DESIGN"].map((filter, i) => (
             <button 
               key={filter}
@@ -75,14 +66,19 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* 3. PROJECT GRID */}
+      {/* PROJECT GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROJECTS.map((project) => (
           <div 
             key={project.id} 
-            className="group bg-brand-panel border border-brand-steel p-6 hover:border-brand-cyan transition-colors duration-200 flex flex-col h-full"
+            className="group bg-brand-panel border border-brand-steel p-6 hover:border-brand-cyan transition-colors duration-200 flex flex-col h-full relative overflow-hidden"
           >
-            {/* Header: ID & Status */}
+            {/* Tech Decor */}
+            <div className="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity">
+               <FaExternalLinkAlt className="text-brand-cyan text-xl" />
+            </div>
+
+            {/* Header */}
             <div className="flex justify-between items-start mb-6 font-mono text-xs">
               <span className="text-brand-cyan">ID: PRJ-{project.id}</span>
               <span className={`px-2 py-1 border ${
@@ -99,7 +95,7 @@ export default function Projects() {
               {project.title}
             </h3>
 
-            {/* Tech Stack Tags */}
+            {/* Tech Tags */}
             <div className="flex flex-wrap gap-2 mb-4">
               {project.tech.map((t) => (
                 <span key={t} className="text-[10px] font-mono bg-brand-steel/30 text-brand-muted px-2 py-1">
@@ -108,12 +104,12 @@ export default function Projects() {
               ))}
             </div>
 
-            {/* Description (The Log) */}
+            {/* Log Description */}
             <p className="font-mono text-xs text-brand-muted leading-relaxed mb-8 flex-grow border-l-2 border-brand-steel pl-3">
               {project.desc}
             </p>
 
-            {/* Action Buttons */}
+            {/* Actions */}
             <div className="grid grid-cols-2 gap-3 mt-auto">
               <a href={project.links.repo} className="flex items-center justify-center gap-2 border border-brand-steel py-2 text-xs font-mono text-brand-muted hover:text-white hover:bg-brand-steel/20 transition-colors">
                 <FaGithub /> SOURCE_CODE
