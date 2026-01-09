@@ -149,8 +149,8 @@ export default function Dashboard() {
             {/* Project 2 */}
             <div className="flex justify-between items-center border-l-2 border-brand-steel pl-3 group-hover:border-brand-cyan transition-colors">
               <div>
-                <span className="text-brand-text font-bold block mb-1">BIFROST_ENGINE</span>
-                <span className="text-brand-muted">Serverless URL redirection unit</span>
+                <span className="text-brand-text font-bold block mb-1">Dolphin Chat Interface</span>
+                <span className="text-brand-muted">Local AI powered Chatbot</span>
               </div>
               <span className="text-blue-400 bg-blue-400/10 px-2 py-1 rounded-[2px] text-[10px]">
                 INTERNAL
@@ -160,11 +160,11 @@ export default function Dashboard() {
              {/* Project 3 */}
              <div className="flex justify-between items-center border-l-2 border-brand-steel pl-3 group-hover:border-brand-cyan transition-colors">
               <div>
-                <span className="text-brand-text font-bold block mb-1">TASK_MATRIX</span>
-                <span className="text-brand-muted">Collaborative management dashboard</span>
+                <span className="text-brand-text font-bold block mb-1">Empire V1 - Personal Password Vault</span>
+                <span className="text-brand-muted">Empire V1 is a secure, personal password management application designed to store and retrieve credentials efficiently. It serves as a foundational project to explore CRUD operations, Database Management, and Frontend-Backend Integration.</span>
               </div>
               <span className="text-brand-muted border border-brand-muted px-2 py-1 rounded-[2px] text-[10px]">
-                ARCHIVED
+                DEPLOYED
               </span>
             </div>
           </div>
