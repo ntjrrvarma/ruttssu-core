@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { FaArrowLeft, FaTerminal, FaHistory, FaDownload, FaMapMarkerAlt, FaGlobe, FaGraduationCap } from "react-icons/fa";
+import { FaArrowLeft, FaTerminal, FaHistory, FaDownload, FaMapMarkerAlt, FaGlobe, FaGraduationCap, FaServer, FaCode, FaRobot } from "react-icons/fa";
 
-// REAL DATA FROM RESUME
+[cite_start]// REAL DATA FROM RESUME [cite: 14, 49]
 const EXPERIENCE = [
   {
     id: "01",
@@ -37,10 +37,13 @@ const EXPERIENCE = [
   }
 ];
 
+[cite_start]// EXPANDED SKILLS FROM RESUME & CONTEXT [cite: 56, 57, 58, 59, 60]
 const SKILLS = {
-  AUTOMATION_OPS: ["Python (Advanced)", "Shell/Bash", "Linux/Unix Admin", "GCP/AWS", "Docker/GKE"],
-  WEB_STACK: ["Next.js 15", "TypeScript", "React", "Supabase", "Tailwind CSS"],
-  TOOLS: ["JIRA", "ServiceNow", "Git", "Postman", "SQL"]
+  AUTOMATION_CORE: ["Python (Advanced)", "Shell/Bash Scripting", "Log Parsing & Regex", "Auto-Remediation", "Cron Jobs"],
+  CLOUD_INFRA: ["Linux/Unix Admin", "AWS (EC2/S3)", "GCP (GKE/Functions)", "Docker & Containers", "File System Mgmt"],
+  FULL_STACK_UI: ["Next.js 15", "TypeScript", "React", "Tailwind CSS", "Framer Motion"],
+  BACKEND_DATA: ["Supabase", "PostgreSQL", "SQL Optimization", "Legacy Data Validation", "REST APIs"],
+  RELIABILITY_OPS: ["Root Cause Analysis", "Incident Management", "SLA Monitoring", "JIRA/ServiceNow", "Production Support"]
 };
 
 export default function About() {
@@ -67,12 +70,13 @@ export default function About() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
         
-        {/* 2. LEFT PANEL: THE SPECS (Bio & Skills) */}
-        <div className="md:col-span-1 space-y-6">
+        {/* 2. LEFT PANEL: THE SPECS (Sticky Sidebar) */}
+        {/* Added 'sticky top-24' so it scrolls with you */}
+        <div className="md:col-span-1 space-y-6 md:sticky md:top-24 h-fit">
           
-          {/* BIO CARD */}
+          {/* SYSTEM BIO CARD */}
           <div className="bg-brand-panel border border-brand-steel p-6 relative group">
             <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-brand-muted/30 group-hover:border-brand-cyan transition-colors"></div>
             <h3 className="text-sm font-sans font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
@@ -88,43 +92,79 @@ export default function About() {
               <p className="flex items-center gap-2">
                 <FaMapMarkerAlt /> <span className="text-brand-gold">Chennai, India</span>
               </p>
+              
               <div className="w-full h-[1px] bg-brand-steel my-4"></div>
+              
+              {/* THE IMPRESSIVE BIO */}
+              <p className="text-brand-text">
+                <span className="text-brand-cyan font-bold">{'>'} MISSION PROFILE:</span>
+              </p>
               <p>
-                7+ years driving Operational Excellence. Expert in Incident Management, RCA, and Production Support. 
-                Specialized in reducing MTTR by building Python-based automation tools that eliminate operational toil.
+                I don't just write code; I engineer stability. With 7+ years in high-stakes environments, I specialize in automating the "boring stuff" to focus on high-impact architecture.
+              </p>
+              <p>
+                Currently bridging the gap between <span className="text-white">Enterprise Reliability</span> (Python/Automation) and <span className="text-white">Modern Product Engineering</span> (Next.js/Cloud).
               </p>
             </div>
           </div>
 
-          {/* SKILLS CARD */}
+          {/* EXTENDED SKILLS CARD */}
           <div className="bg-brand-panel border border-brand-steel p-6 relative group">
              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-brand-muted/30 group-hover:border-brand-cyan transition-colors"></div>
             <h3 className="text-sm font-sans font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
               <FaGlobe className="text-brand-cyan" /> // INSTALLED_PACKAGES
             </h3>
             
-            <div className="space-y-4">
+            <div className="space-y-5">
+              
+              {/* Category 1: Automation */}
               <div>
-                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase">Automation_&_Ops</div>
+                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase flex items-center gap-1"><FaRobot/> Automation_Core</div>
                 <div className="flex flex-wrap gap-2">
-                  {SKILLS.AUTOMATION_OPS.map(s => (
-                    <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan transition-colors cursor-crosshair">
+                  {SKILLS.AUTOMATION_CORE.map(s => (
+                    <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan hover:text-brand-cyan transition-colors cursor-crosshair">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Category 2: Cloud */}
+              <div>
+                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase flex items-center gap-1"><FaServer/> Cloud_&_Infra</div>
+                <div className="flex flex-wrap gap-2">
+                  {SKILLS.CLOUD_INFRA.map(s => (
+                    <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan hover:text-brand-cyan transition-colors cursor-crosshair">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Category 3: Full Stack */}
+              <div>
+                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase flex items-center gap-1"><FaCode/> Web_Interface</div>
+                <div className="flex flex-wrap gap-2">
+                  {SKILLS.FULL_STACK_UI.map(s => (
+                    <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan hover:text-brand-cyan transition-colors cursor-crosshair">
                       {s}
                     </span>
                   ))}
                 </div>
               </div>
               
+              {/* Category 4: Reliability */}
               <div>
-                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase">Full_Stack_Dev</div>
+                <div className="text-[10px] font-mono text-brand-muted mb-2 uppercase flex items-center gap-1"><FaHistory/> Reliability_Ops</div>
                 <div className="flex flex-wrap gap-2">
-                  {SKILLS.WEB_STACK.map(s => (
-                    <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan transition-colors cursor-crosshair">
+                  {SKILLS.RELIABILITY_OPS.map(s => (
+                    <span key={s} className="px-2 py-1 bg-brand-steel/20 border border-brand-steel text-[10px] font-mono text-brand-text hover:border-brand-cyan hover:text-brand-cyan transition-colors cursor-crosshair">
                       {s}
                     </span>
                   ))}
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -133,17 +173,15 @@ export default function About() {
         {/* 3. RIGHT PANEL: RUNTIME HISTORY (Experience) */}
         <div className="md:col-span-2">
           <div className="bg-brand-panel border border-brand-steel p-8 h-full relative group">
-            {/* Decor */}
             <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-brand-muted/30 group-hover:border-brand-cyan transition-colors"></div>
             
             <h3 className="text-sm font-sans font-bold text-brand-cyan uppercase tracking-wider mb-8 flex items-center gap-2">
               <FaHistory /> {'>'} EXEC_LOG: RUNTIME_HISTORY
             </h3>
 
-            <div className="space-y-8 relative border-l border-brand-steel/50 ml-2 pl-8">
+            <div className="space-y-12 relative border-l border-brand-steel/50 ml-2 pl-8">
               {EXPERIENCE.map((job) => (
                 <div key={job.id} className="relative group/item">
-                  {/* Timeline Dot */}
                   <div className="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-brand-void border-2 border-brand-steel group-hover/item:border-brand-cyan group-hover/item:bg-brand-cyan transition-colors"></div>
                   
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
@@ -155,7 +193,7 @@ export default function About() {
                     </span>
                   </div>
                   
-                  <div className="text-xs font-mono text-brand-muted mb-2">
+                  <div className="text-xs font-mono text-brand-muted mb-4 uppercase tracking-wider">
                     @ {job.company}
                   </div>
                   
@@ -165,16 +203,16 @@ export default function About() {
                 </div>
               ))}
               
-              {/* EDUCATION BLOCK */}
+              [cite_start]{/* EDUCATION BLOCK [cite: 45, 46] */}
               <div className="mt-12 pt-8 border-t border-brand-steel/30">
-                <h3 className="text-sm font-sans font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-2">
+                <h3 className="text-sm font-sans font-bold text-white uppercase tracking-wider mb-8 flex items-center gap-2">
                   <FaGraduationCap className="text-brand-cyan" /> // KNOWLEDGE_BASE
                 </h3>
                 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <div className="relative group/item">
                      <div className="flex flex-col sm:flex-row sm:items-center justify-between">
-                        <h4 className="text-sm font-sans font-bold text-brand-text">MBA (HUMAN RESOURCES)</h4>
+                        <h4 className="text-sm font-sans font-bold text-brand-text group-hover/item:text-brand-cyan transition-colors">MBA (HUMAN RESOURCES)</h4>
                         <span className="text-[10px] font-mono text-brand-muted">2025 - 2027 (PURSUING)</span>
                      </div>
                      <p className="text-xs font-mono text-brand-muted mt-1">SRM Institute of Science and Technology</p>
@@ -182,7 +220,7 @@ export default function About() {
                   
                   <div className="relative group/item">
                      <div className="flex flex-col sm:flex-row sm:items-center justify-between">
-                        <h4 className="text-sm font-sans font-bold text-brand-text">B.TECH, COMPUTER SCIENCE</h4>
+                        <h4 className="text-sm font-sans font-bold text-brand-text group-hover/item:text-brand-cyan transition-colors">B.TECH, COMPUTER SCIENCE</h4>
                         <span className="text-[10px] font-mono text-brand-muted">2014 - 2018</span>
                      </div>
                      <p className="text-xs font-mono text-brand-muted mt-1">Dr. M.G.R. Educational and Research Institute</p>
